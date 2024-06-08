@@ -1,0 +1,23 @@
+# Archivos binarios
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archivos ejecutables
+bin/
+
+# Directorios de dependencias
+vendor/
+
+# Archivos de respaldo
+*.bak
+*.tmp
+
+# Archivos de registro y archivos de salida de construcción
+*.log
+*.out
+
+# Archivos de configuración específicos del usuario
+.idea/
+.vscode/
