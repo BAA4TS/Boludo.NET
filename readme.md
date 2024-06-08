@@ -72,4 +72,3 @@ Esto generará un archivo ejecutable del servidor.
 ```
 
 Con cualquiera de estas opciones, podrás desplegar el proyecto en tu entorno local. Recuerda que si optas por clonar el proyecto, es importante ejecutar `go mod tidy` para asegurarte de tener todas las dependencias necesarias antes de ejecutar el servidor.
-```
