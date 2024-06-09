@@ -8,8 +8,8 @@ import (
 	"os"
 	"strings"
 
+	seguridad "BOLUDO.NET/Seguridad"
 	"BOLUDO.NET/config"
-	"BOLUDO.NET/seguridad"
 	"BOLUDO.NET/util"
 )
 
