@@ -1,11 +1,11 @@
 package main
 
 import (
-	"BOLUDO.NET/net"
+	"BOLUDO.NET/nets"
 	"BOLUDO.NET/repl"
 )
 
 func main() {
-	go net.Start()
+	go nets.Start()
 	repl.Repl()
 }

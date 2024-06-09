@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"BOLUDO.NET/nets"
 	"BOLUDO.NET/util"
 )
 
@@ -33,7 +34,7 @@ func Repl() {
 
 			// Siguiente funcion para listar los bots
 		} else if input == "-l" || input == "list" || input == "l" {
-
+			nets.Listar()
 			// Siguiente funcion para Conectarse a un bot
 		} else if input == "-c" || input == "connect" || input == "-con" {
 
