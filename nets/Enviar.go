@@ -1,5 +1,0 @@
-package nets
-
-func Enviar() {
-
-}

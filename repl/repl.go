@@ -37,7 +37,7 @@ func Repl() {
 			nets.Listar()
 			// Siguiente funcion para Conectarse a un bot
 		} else if input == "-c" || input == "connect" || input == "-con" {
-
+			nets.ReplBOT()
 			// Siguiente funcion para Menu
 		} else if input == "-h" || input == "help" || input == "ayuda" {
 			util.Menu()
