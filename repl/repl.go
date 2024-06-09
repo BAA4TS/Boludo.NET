@@ -12,6 +12,8 @@ func Repl() {
 		check bool
 		input string
 	)
+	// Imprimir por primera ves el menu
+	util.Menu()
 
 	for !check {
 		// Input Principal
@@ -37,9 +39,11 @@ func Repl() {
 
 			// Siguiente funcion para Menu
 		} else if input == "-h" || input == "help" || input == "ayuda" {
-
+			util.Menu()
+			//Siguiente funcion para mostrar status cuantos bots
+		} else if input == "-s" || input == "status" || input == "-st" {
+			util.Status()
 		}
-
 		// Salida del programa
 		if input == "exit" {
 			os.Exit(1)
