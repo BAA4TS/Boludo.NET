@@ -1,6 +1,14 @@
-Este parece ser un proyecto de código abierto que implementa una BOT-NET en Go. Aquí tienes una descripción básica de cómo usarlo:
+Claro, puedo ayudarte a mejorar el orden y agregar un índice para que la información sea más accesible. Aquí tienes una versión mejorada:
 
-## Instalación y Uso
+## Índice
+
+1. [Instalación y Uso](#instalación-y-uso)
+2. [Configuración](#configuración)
+3. [Features](#features)
+
+## Instalación y Uso <a name="instalación-y-uso"></a>
+
+Para comenzar a usar Boludo.NET, sigue estos pasos:
 
 1. **Descargar el proyecto:**
    ```bash
@@ -28,9 +36,9 @@ Este parece ser un proyecto de código abierto que implementa una BOT-NET en Go.
    ./Server.exe
    ```
 
-## Configuración
+## Configuración <a name="configuración"></a>
 
-La botnet utiliza un archivo `.env` para la configuración principal. Aquí está un ejemplo de cómo se configura:
+Para configurar Boludo.NET, modifica el archivo `.env` según tus necesidades. Aquí hay un ejemplo de configuración:
 
 ```go
 // Puerto en el que correrá el servidor
@@ -52,13 +60,14 @@ KEEP_ALIVE_MSG="check"
 NOTIFY=no
 ```
 
-Es importante tener en cuenta que los cambios realizados en el archivo `.env` no surtirán efecto en tiempo de ejecución, por lo que deberás reiniciar el servidor después de realizar cualquier modificación en la configuración.
+Recuerda que los cambios realizados en el archivo `.env` requieren reiniciar el servidor para que surtan efecto.
 
+## Features <a name="features"></a>
 
+Cosas a agregar a futuro
 
-
-## Feature
-   * Cliente
-   * Cliente Builder
-   * Upgrade Menu
-   * Color Menu
+| Server       | BOT                   |
+|--------------|-----------------------|
+| Menu fix     | Arreglar Receptor     |
+| Menu Color   | Screenshot            |
+| Cliente Builder | Transferencia de archivos |
