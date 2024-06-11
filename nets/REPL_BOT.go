@@ -57,7 +57,9 @@ func ReplBOT() {
 			}
 			recvRespuesta, err := Recibir(ID)
 			if err == nil {
-				fmt.Print(recvRespuesta)
+				fmt.Println("------------------------RESPUESTA--------------------- \n", recvRespuesta, "\n", "-----------------------------------------------------")
+			} else {
+				fmt.Println("Error al recibir la respuesta del bot:", err)
 			}
 		}
 	}
