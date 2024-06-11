@@ -53,3 +53,12 @@ NOTIFY=no
 ```
 
 Es importante tener en cuenta que los cambios realizados en el archivo `.env` no surtirán efecto en tiempo de ejecución, por lo que deberás reiniciar el servidor después de realizar cualquier modificación en la configuración.
+
+
+
+
+## Feature
+   * Cliente
+   * Cliente Builder
+   * Upgrade Menu
+   * Color Menu
