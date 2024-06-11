@@ -5,6 +5,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"net"
 	"os"
 	"strings"
 
@@ -19,7 +20,7 @@ func ReplBOT() {
 	var (
 		ID      int
 		Input   string
-		ReplBOT bool = false
+		replBOT bool
 	)
 
 	util.LimpiarConsola()
@@ -28,45 +29,60 @@ func ReplBOT() {
 	fmt.Print("\nIngrese el ID del BOT (9999 para salir): ")
 	fmt.Scan(&ID)
 	fmt.Scanln()
-	if CheckBOT(ID) {
-		util.LimpiarConsola()
-		fmt.Printf("Sesión establecida: %s\n", config.BOT[ID].RemoteAddr())
-		Lector := bufio.NewReader(os.Stdin)
-		for !ReplBOT {
-			fmt.Printf("(%s)> ", config.BOT[ID].RemoteAddr())
-			Input, _ = Lector.ReadString('\n')
-			Input = Input[:len(Input)-1]
-			Input = strings.TrimSpace(Input)
-			if Input == "exit" {
-				ReplBOT = true
-				util.LimpiarConsola()
-			} else {
-				Enviar(ID, Input)
+
+	if ID == 9999 {
+		return // Salir de la función si el ID es 9999
+	}
+
+	if !CheckBOT(ID) {
+		fmt.Println("ID de BOT no válido.")
+		return
+	}
+
+	util.LimpiarConsola()
+	fmt.Printf("Sesión establecida: %s\n", config.BOT[ID].RemoteAddr())
+	lector := bufio.NewReader(os.Stdin)
+
+	for !replBOT {
+		fmt.Printf("(%s)> ", config.BOT[ID].RemoteAddr())
+		Input, _ = lector.ReadString('\n')
+		Input = strings.TrimSpace(Input)
+
+		if Input == "exit" {
+			replBOT = true
+			util.LimpiarConsola()
+		} else {
+			if !Enviar(ID, Input) {
+				replBOT = true
 			}
 		}
-	} else if ID == 9999 {
-		// Salir del bucle
-	} else {
-		fmt.Println("ID de BOT no válido.")
 	}
 }
 
 // Enviar envía un mensaje encriptado al bot con el ID especificado.
 // Si hay un error al encriptar o enviar el mensaje, se registra un error.
-func Enviar(ID int, InputSend string) {
+func Enviar(ID int, InputSend string) bool {
 	// Encriptar el mensaje
 	InputEncrypt, err := seguridad.Encryptar(InputSend)
 	if err != nil {
 		log.Fatalf("[!] ERROR AL ENCRIPTAR: %s", err.Error())
+		return false
 	}
 
 	if CheckBOT(ID) {
 		BOT := config.BOT[ID]
 		_, err := BOT.Write([]byte(InputEncrypt))
 		if err != nil {
-			log.Fatalf("[!] ERROR AL ENVIAR (Sección Write): %s", err.Error())
+			if err == net.ErrClosed {
+				log.Printf("[!] El cliente se desconectó: %s", err.Error())
+				return false
+			}
+			log.Printf("[!] ERROR AL ENVIAR (Sección Write): %s", err.Error())
+			return false
 		}
-	} else {
-		log.Printf("[!] BOT con ID %d no válido o desconectado.", ID)
+		return true
 	}
+
+	log.Printf("[!] BOT con ID %d no válido o desconectado.", ID)
+	return false
 }
