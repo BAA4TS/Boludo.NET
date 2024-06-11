@@ -13,11 +13,11 @@ func Repl() {
 		check bool
 		input string
 	)
-	// Imprimir por primera ves el menu
+	// Imprimir por primera vez el menú
 	util.Menu()
 
 	for !check {
-		// Input Principal
+		// Entrada principal
 		fmt.Print("(Boludo)> ")
 		fmt.Scan(&input)
 
@@ -25,28 +25,33 @@ func Repl() {
 		1 - Limpiar consola
 		2 - Listar BOT
 		3 - Conectarse con un bot
-		4 - Menu de ayuda
+		4 - Menú de ayuda
+		5 - Mostrar estado
 		*/
 
+		switch input {
 		// Función para limpiar la consola
-		if input == "cls" || input == "-cl" || input == "clear" {
+		case "-cl":
 			util.LimpiarConsola()
 
-			// Siguiente funcion para listar los bots
-		} else if input == "-l" || input == "list" || input == "l" {
+		// Función para listar los bots
+		case "-l":
 			nets.Listar()
-			// Siguiente funcion para Conectarse a un bot
-		} else if input == "-c" || input == "connect" || input == "-con" {
+
+		// Función para conectarse a un bot
+		case "-c":
 			nets.ReplBOT()
-			// Siguiente funcion para Menu
-		} else if input == "-h" || input == "help" || input == "ayuda" {
+
+		// Función para mostrar el menú de ayuda
+		case "-h":
 			util.Menu()
-			//Siguiente funcion para mostrar status cuantos bots
-		} else if input == "-s" || input == "status" || input == "-st" {
+
+		// Función para mostrar el estado
+		case "-s":
 			util.Status()
-		}
+
 		// Salida del programa
-		if input == "exit" {
+		case "-e":
 			os.Exit(1)
 		}
 	}
