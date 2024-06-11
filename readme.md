@@ -25,15 +25,9 @@ Para comenzar a usar Boludo.NET, sigue estos pasos:
    go mod tidy
    ```
 
-4. **Compilar o ejecutar el servidor:**
+4. **Ejecutar el servidor:**
    ```bash
    go run .\Server.go
-   ```
-
-   O bien, si prefieres compilarlo primero:
-   ```bash
-   go build .\Server.go
-   ./Server.exe
    ```
 
 ## Configuración <a name="configuración"></a>
