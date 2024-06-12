@@ -1,5 +1,4 @@
-Claro, puedo ayudarte a mejorar el orden y agregar un índice para que la información sea más accesible. Aquí tienes una versión mejorada:
-
+(Postpuesto)
 ## Índice
 
 1. [Instalación y Uso](#instalación-y-uso)
