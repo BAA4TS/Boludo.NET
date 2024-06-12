@@ -8,6 +8,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"time"
 
 	seguridad "BOLUDO.NET/Seguridad"
 	"BOLUDO.NET/config"
@@ -55,6 +56,7 @@ func ReplBOT() {
 			if !Enviar(ID, Input) {
 				replBOT = true
 			}
+			time.Sleep(2 * time.Second)
 			recvRespuesta, err := Recibir(ID)
 			if err == nil {
 				fmt.Println("------------------------RESPUESTA--------------------- \n", recvRespuesta, "\n", "-----------------------------------------------------")
@@ -96,7 +98,7 @@ func Enviar(ID int, InputSend string) bool {
 // Funcion para recibir mensaje de bot
 func Recibir(ID int) (string, error) {
 	// Recibir Mensaje
-	buffer := make([]byte, 1024)
+	buffer := make([]byte, 4096)
 	BOT := config.BOT[ID]
 	by, err := BOT.Read(buffer)
 	if err != nil {
